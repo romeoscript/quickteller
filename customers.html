@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Quickteller Business - Customers</title>
+<style>
+@font-face { font-family: 'KumbhSans'; src: url('/fonts/kumbhsans/KumbhSans-Regular.ttf') format('truetype'); font-weight: 400; }
+@font-face { font-family: 'KumbhSans'; src: url('/fonts/kumbhsans/KumbhSans-Medium.ttf') format('truetype'); font-weight: 500; }
+@font-face { font-family: 'KumbhSans'; src: url('/fonts/kumbhsans/KumbhSans-Bold.ttf') format('truetype'); font-weight: 700; }
+@font-face { font-family: 'KumbhSans'; src: url('/fonts/kumbhsans/KumbhSans-Light.ttf') format('truetype'); font-weight: 300; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 10px; }
+body { font-family: 'KumbhSans', sans-serif; font-size: 14px; background: #f5f9fa; color: #252b33; }
+
+.sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: #fff; border-right: 1px solid #e4e4e4; padding: 20px 0; display: flex; flex-direction: column; z-index: 100; }
+.sidebar-logo { padding: 10px 24px 30px; }
+.sidebar-logo svg { width: 150px; height: auto; }
+.sidebar-section { margin-bottom: 8px; }
+.sidebar-section-title { font-size: 11px; color: #a7a9c0; text-transform: uppercase; letter-spacing: 1px; padding: 8px 24px; font-weight: 500; }
+.sidebar-item { display: flex; align-items: center; gap: 12px; padding: 10px 24px; font-size: 14px; color: #676b71; cursor: pointer; text-decoration: none; transition: all 0.15s; border-left: 3px solid transparent; }
+.sidebar-item:hover { background: #f5f9fa; color: #252b33; }
+.sidebar-item.active { background: #f0f8ff; color: #009fe4; border-left-color: #009fe4; font-weight: 500; }
+.sidebar-item svg { width: 18px; height: 18px; flex-shrink: 0; }
+.sidebar-footer { margin-top: auto; padding: 20px 24px; border-top: 1px solid #e4e4e4; display: flex; align-items: center; gap: 10px; }
+.sidebar-avatar { width: 36px; height: 36px; border-radius: 50%; background: #009fe4; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 14px; }
+.sidebar-user-name { font-size: 13px; font-weight: 500; color: #252b33; }
+.sidebar-user-email { font-size: 11px; color: #a7a9c0; }
+
+.main { margin-left: 240px; min-height: 100vh; }
+.topbar { height: 60px; background: #fff; border-bottom: 1px solid #e4e4e4; display: flex; align-items: center; justify-content: space-between; padding: 0 30px; position: sticky; top: 0; z-index: 50; }
+.topbar-left { display: flex; align-items: center; gap: 12px; }
+.topbar-env { display: inline-flex; align-items: center; gap: 6px; background: #e8f8f0; color: #2eb57e; font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 20px; }
+.topbar-env .dot { width: 6px; height: 6px; border-radius: 50%; background: #2eb57e; }
+.topbar-right { display: flex; align-items: center; gap: 16px; }
+.topbar-btn { background: #009fe4; color: #fff; border: none; padding: 8px 18px; border-radius: 6px; font-size: 13px; font-weight: 500; cursor: pointer; font-family: inherit; }
+.topbar-icon-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid #e4e4e4; background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #676b71; position: relative; }
+.notif-badge { position: absolute; top: -2px; right: -2px; width: 16px; height: 16px; background: #f05050; border-radius: 50%; font-size: 9px; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+
+.content-area { padding: 30px; }
+.page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.page-title { color: #003c58; font-size: 24px; font-weight: 600; }
+
+/* Summary Strip */
+.summary-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+.strip-card { background: #fff; border: 0.5px solid #e4e4e4; border-radius: 8px; padding: 20px; }
+.strip-label { font-size: 12px; color: #838b9e; margin-bottom: 8px; }
+.strip-value { font-size: 24px; font-weight: 700; color: #252b33; }
+.strip-sub { font-size: 12px; color: #2eb57e; margin-top: 4px; display: flex; align-items: center; gap: 4px; }
+.strip-sub svg { width: 12px; height: 12px; }
+
+/* Filters */
+.filter-bar { display: flex; gap: 12px; align-items: center; margin-bottom: 24px; flex-wrap: wrap; }
+.filter-select { padding: 8px 14px; border: 1px solid #e4e4e4; border-radius: 6px; font-size: 13px; font-family: inherit; color: #252b33; background: #fff; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23676b71' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 30px; }
+.filter-input { padding: 8px 14px; border: 1px solid #e4e4e4; border-radius: 6px; font-size: 13px; font-family: inherit; color: #252b33; background: #fff; width: 260px; }
+.filter-input::placeholder { color: #a7a9c0; }
+.filter-btn { padding: 8px 18px; border: 1px solid #e4e4e4; border-radius: 6px; font-size: 13px; font-family: inherit; color: #676b71; background: #fff; cursor: pointer; }
+.filter-btn.primary { background: #009fe4; color: #fff; border-color: #009fe4; }
+.export-btn { padding: 8px 18px; border: 1px solid #e4e4e4; border-radius: 6px; font-size: 13px; font-family: inherit; color: #252b33; background: #fff; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+
+/* Table */
+.table-card { background: #fff; border: 0.5px solid #e4e4e4; border-radius: 8px; overflow: hidden; }
+.table-top { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid #e4e4e4; }
+.table-info { font-size: 13px; color: #676b71; }
+.table-info strong { color: #252b33; }
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; font-size: 11px; color: #a7a9c0; font-weight: 500; padding: 12px 16px; border-bottom: 1px solid #e4e4e4; text-transform: uppercase; letter-spacing: 0.5px; background: #fafbfc; }
+td { padding: 14px 16px; font-size: 13px; border-bottom: 1px solid #f5f5f5; }
+tr:hover { background: #f9fbfc; cursor: pointer; }
+.amount-cell { font-weight: 600; font-family: 'KumbhSans', monospace; }
+
+/* Customer Row */
+.customer-cell { display: flex; align-items: center; gap: 10px; }
+.customer-avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; flex-shrink: 0; }
+.customer-name { font-weight: 500; color: #252b33; }
+.customer-email { font-size: 12px; color: #a7a9c0; }
+.tag { display: inline-flex; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; }
+.tag.active { background: #e8f8f0; color: #2eb57e; }
+.tag.inactive { background: #f5f5f5; color: #a7a9c0; }
+.tag.new { background: #f0f8ff; color: #009fe4; }
+
+/* Pagination */
+.pagination { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; }
+.pagination-info { font-size: 13px; color: #676b71; }
+.pagination-btns { display: flex; gap: 4px; }
+.page-btn { width: 32px; height: 32px; border: 1px solid #e4e4e4; border-radius: 6px; background: #fff; font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: inherit; color: #252b33; }
+.page-btn:hover { background: #f5f9fa; }
+.page-btn.active { background: #009fe4; color: #fff; border-color: #009fe4; }
+.page-btn.disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Tabs */
+.tabs { display: flex; gap: 0; margin-bottom: 24px; border-bottom: 2px solid #e4e4e4; }
+.tab { padding: 12px 24px; font-size: 14px; font-weight: 500; color: #676b71; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; font-family: inherit; background: none; border-top: none; border-left: none; border-right: none; }
+.tab.active { color: #009fe4; border-bottom-color: #009fe4; }
+.tab:hover { color: #252b33; }
+.tab .count { background: #f0f0f0; padding: 2px 8px; border-radius: 10px; font-size: 11px; margin-left: 6px; }
+.tab.active .count { background: #e0f0fa; color: #009fe4; }
+</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <div class="sidebar-logo">
+    <svg viewBox="0 0 850.39 283.46" xmlns="http://www.w3.org/2000/svg">
+      <style>.st1{fill:#E22F28}.st2{fill:#03435E}</style>
+      <path class="st2" d="M93.37,164.16c-13.09,0-23.71-10.62-23.71-23.7c0-13.09,10.62-23.7,23.71-23.7c13.09,0,23.71,10.61,23.71,23.7C117.08,153.54,106.46,164.16,93.37,164.16 M127.43,163.06c4.31-6.47,6.82-14.24,6.82-22.6c0-22.57-18.3-40.87-40.88-40.87c-22.58,0-40.88,18.3-40.88,40.87c0,22.56,18.3,40.87,40.88,40.87c8.36,0,16.14-2.51,22.61-6.83l8.46,8.46l13.08-9.81L127.43,163.06z"/>
+      <path class="st2" d="M197.3,119.79l0.03,52.28c0,0-8.21,6.57-26.2,6.57c-16.35,0-25.34-8.18-25.34-26.16v-32.69h16.35v32.69c0,11.44,5.72,12.26,10.63,12.26c4.91,0,8.18-2.45,8.18-2.45l-0.01-42.49H197.3z"/>
+      <rect x="211.77" y="119.78" class="st2" width="16.35" height="57.71"/>
+      <path class="st2" d="M239.66,148.64c0-4.16,0.68-8.1,2.03-11.79c1.35-3.68,3.31-6.91,5.87-9.65c2.56-2.75,5.67-4.91,9.33-6.52c3.66-1.61,7.83-2.42,12.51-2.42c3.07,0,5.89,0.27,8.45,0.82c2.57,0.55,5.05,1.33,7.47,2.36l-3.4,13.06c-1.54-0.58-3.22-1.1-5.05-1.54c-1.83-0.44-3.88-0.65-6.15-0.65c-4.83,0-8.44,1.49-10.81,4.49c-2.37,3-3.56,6.95-3.56,11.84c0,5.2,1.11,9.22,3.34,12.07c2.23,2.86,6.13,4.28,11.69,4.28c1.97,0,4.09-0.18,6.36-0.55c2.27-0.37,4.35-0.95,6.26-1.76l2.31,13.39c-1.9,0.8-4.29,1.49-7.14,2.08c-2.85,0.58-6,0.88-9.43,0.88c-5.27,0-9.81-0.78-13.61-2.36c-3.8-1.57-6.93-3.71-9.39-6.42c-2.45-2.7-4.24-5.91-5.37-9.61C240.23,156.96,239.66,152.95,239.66,148.64"/>
+      <path class="st2" d="M314.78,140.5c1.61-1.74,3.27-3.56,4.99-5.45c1.72-1.89,3.39-3.77,4.99-5.62c1.61-1.86,3.12-3.62,4.55-5.29c1.43-1.67,2.65-3.12,3.68-4.36h19.44c-3.89,4.45-7.67,8.71-11.36,12.76c-3.69,4.05-7.73,8.22-12.12,12.53c2.2,1.98,4.46,4.34,6.8,7.09c2.34,2.74,4.62,5.59,6.8,8.52c2.19,2.93,4.21,5.86,6.04,8.79c1.83,2.93,3.36,5.6,4.61,8.02h-18.81c-1.16-1.91-2.5-4.01-4-6.33c-1.49-2.31-3.08-4.61-4.77-6.92c-1.68-2.31-3.45-4.54-5.31-6.66c-1.86-2.12-3.7-3.92-5.53-5.39v25.29h-16.35v-72.12l16.35-2.88V140.5z"/>
+      <path class="st2" d="M362.07,105.37l16.35-2.89v17h16.18v13.6h-16.18v20.29c0,3.44,0.6,6.18,1.81,8.24c1.21,2.05,3.64,3.07,7.3,3.07c1.76,0,3.57-0.17,5.43-0.5c1.87-0.33,3.56-0.78,5.11-1.38l2.3,12.73c-1.97,0.81-4.17,1.5-6.59,2.09c-2.41,0.58-5.38,0.87-8.89,0.87c-4.46,0-8.16-0.6-11.08-1.8c-2.93-1.21-5.27-2.9-7.02-5.05c-1.76-2.15-2.99-4.77-3.68-7.84c-0.69-3.08-1.04-6.47-1.04-10.2V105.37z"/>
+      <path class="st2" d="M461.51,152.78h-36.79c0,0,0.82,12.26,17.17,12.26c8.17,0,16.35-2.45,16.35-2.45l1.64,13.08c0,0-8.18,3.27-19.62,3.27c-16.35,0-31.07-8.17-31.07-31.05c0-17.98,11.44-29.43,27.8-29.43C461.51,118.45,463.14,142.97,461.51,152.78 M436.16,129.9c-10.63,0-11.44,11.44-11.44,11.44h22.89C447.61,141.34,446.79,129.9,436.16,129.9"/>
+      <path class="st2" d="M496.54,178.58c-4.75-0.07-8.61-0.58-11.58-1.53c-2.97-0.95-5.3-2.29-7.02-4.01c-1.72-1.71-2.9-3.8-3.52-6.25c-0.62-2.45-0.93-5.21-0.93-8.29v-53.14l16.35-2.88v52.73c0,1.47,0.1,2.78,0.33,3.95c0.22,1.18,0.64,2.16,1.26,2.96c0.62,0.81,1.51,1.46,2.69,1.98c1.16,0.51,2.74,0.84,4.72,0.98L496.54,178.58z"/>
+      <path class="st2" d="M534.02,178.58c-4.75-0.07-8.62-0.58-11.58-1.53c-2.96-0.95-5.3-2.29-7.02-4.01c-1.73-1.71-2.9-3.8-3.52-6.25c-0.62-2.45-0.93-5.21-0.93-8.29v-53.14l16.36-2.88v52.73c0,1.47,0.11,2.78,0.33,3.95c0.22,1.18,0.64,2.16,1.26,2.96c0.63,0.81,1.52,1.46,2.7,1.98c1.17,0.51,2.74,0.84,4.72,0.98L534.02,178.58z"/>
+      <path class="st2" d="M644.03,133.34l2.45-13.07c0,0-18.95-5.75-34.34,4.9v52.3h16.35l-0.01-42.49C635.03,130.08,644.03,133.34,644.03,133.34"/>
+      <path class="st2" d="M599.34,152.78h-36.79c0,0,0.82,12.26,17.17,12.26c8.17,0,16.36-2.45,16.36-2.45l1.64,13.08c0,0-8.17,3.27-19.62,3.27c-16.36,0-31.07-8.17-31.07-31.05c0-17.98,11.44-29.43,27.79-29.43C599.34,118.45,600.97,142.97,599.34,152.78 M574,129.9c-10.63,0-11.45,11.44-11.45,11.44h22.9C585.44,141.34,584.62,129.9,574,129.9"/>
+      <path class="st1" d="M679.81,220.72c-6.67-1.66,53.3-71.6,43.31-99.9c-5-14.99-54.98-13.33-54.98-18.32c0-4.99,96.66-18.29,105.78-5.82C788.12,114.18,688.13,224.06,679.81,220.72"/>
+      <path class="st1" d="M796.4,59.22c0,11.95-9.69,21.64-21.65,21.64c-11.96,0-21.66-9.69-21.66-21.64c0-11.96,9.69-21.65,21.66-21.65C786.71,37.56,796.4,47.26,796.4,59.22"/>
+    </svg>
+  </div>
+  <div class="sidebar-section">
+    <a class="sidebar-item" href="/dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Dashboard</a>
+    <a class="sidebar-item" href="/transactions.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Transactions</a>
+    <a class="sidebar-item" href="/settlements.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Settlements</a>
+    <a class="sidebar-item active" href="/customers.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Customers</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Commerce</div>
+    <a class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Storefront</a>
+    <a class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>Payment Links</a>
+    <a class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>POS</a>
+    <a class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Invoices</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Tools</div>
+    <a class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Developer Tools</a>
+    <a class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Settings</a>
+  </div>
+  <div class="sidebar-footer">
+    <div class="sidebar-avatar">DU</div>
+    <div><div class="sidebar-user-name">Demo User</div><div class="sidebar-user-email">demo@quickteller.com</div></div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-left">
+      <span style="font-size:15px;font-weight:600;color:#003c58;">Demo Business Ltd</span>
+      <span class="topbar-env"><span class="dot"></span> Live</span>
+    </div>
+    <div class="topbar-right">
+      <button class="topbar-btn">+ Create Payment Link</button>
+      <div class="topbar-icon-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="notif-badge">3</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-area">
+    <div class="page-header">
+      <h1 class="page-title">Customers</h1>
+      <div style="display:flex;gap:10px;">
+        <button class="export-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export
+        </button>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="summary-strip">
+      <div class="strip-card">
+        <div class="strip-label">Total Customers</div>
+        <div class="strip-value">2,834</div>
+        <div class="strip-sub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 14l5-5 5 5z"/></svg>
+          +127 this month
+        </div>
+      </div>
+      <div class="strip-card">
+        <div class="strip-label">Active Customers</div>
+        <div class="strip-value">1,956</div>
+        <div class="strip-sub">69% of total</div>
+      </div>
+      <div class="strip-card">
+        <div class="strip-label">New This Month</div>
+        <div class="strip-value">127</div>
+        <div class="strip-sub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 14l5-5 5 5z"/></svg>
+          18.6% vs last month
+        </div>
+      </div>
+      <div class="strip-card">
+        <div class="strip-label">Avg. Transaction Value</div>
+        <div class="strip-value">NGN 48,200</div>
+        <div class="strip-sub">Per customer</div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab active">All Customers <span class="count">2,834</span></button>
+      <button class="tab">Active <span class="count">1,956</span></button>
+      <button class="tab">Inactive <span class="count">878</span></button>
+      <button class="tab">New <span class="count">127</span></button>
+    </div>
+
+    <!-- Filters -->
+    <div class="filter-bar">
+      <input type="text" class="filter-input" placeholder="Search by name, email, or phone...">
+      <select class="filter-select">
+        <option>All Time</option>
+        <option>Last 7 days</option>
+        <option>Last 30 days</option>
+        <option>Last 90 days</option>
+      </select>
+      <button class="filter-btn primary">Search</button>
+    </div>
+
+    <!-- Customers Table -->
+    <div class="table-card">
+      <div class="table-top">
+        <div class="table-info">Showing <strong>1-15</strong> of <strong>2,834</strong> customers</div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Customer</th>
+            <th>Phone</th>
+            <th>Total Spent (NGN)</th>
+            <th>Transactions</th>
+            <th>Last Transaction</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="customer-cell"><div class="customer-avatar" style="background:#009fe4">AO</div><div><div class="customer-name">Adebayo Ogunlesi</div><div class="customer-email">adebayo.ogunlesi@gmail.com</div></div></div></td>
+            <td>0801 234 5678</td><td class="amount-cell">4,520,000.00</td><td>87</td><td>Mar 26, 2026</td><td><span class="tag active">Active</span></td>
+          </tr>
+          <tr>
+            <td><div class="customer-cell"><div class="customer-avatar" style="background:#2eb57e">CE</div><div><div class="customer-name">Chioma Eze</div><div class="customer-email">chioma.eze@yahoo.com</div></div></div></td>
+            <td>0803 456 7890</td><td class="amount-cell">2,180,000.00</td><td>54</td><td>Mar 26, 2026</td><td><span class="tag active">Active</span></td>
+          </tr>
+          <tr>
+            <td><div class="customer-cell"><div class="customer-avatar" style="background:#f2994a">IM</div><div><div class="customer-name">Ibrahim Musa</div><div class="customer-email">ibrahim.m@outlook.com</div></div></div></td>
+            <td>0805 678 9012</td><td class="amount-cell">890,000.00</td><td>32</td><td>Mar 26, 2026</td><td><span class="tag active">Active</span></td>
+          </tr>
+          <tr>
+            <td><div class="customer-cell"><div class="customer-avatar" style="background:#9b59b6">FA</div><div><div class="customer-name">Funke Akindele</div><div class="customer-email">funke.akindele@gmail.com</div></div></div></td>
+            <td>0807 890 1234</td><td class="amount-cell">6,750,000.00</td><td>124</td><td>Mar 25, 2026</td><td><span class="tag active">Active</span></td>
+          </tr>
+          <tr>
+            <td><div class="customer-cell"><div class="customer-avatar" style="background:#e74c3c">EO</div><div><div class="customer-name">Emeka Obi</div><div class="customer-email">emeka.obi@company.ng</div></div></div></td>
+            <td>0809 012 3456</td><td class="amount-cell">1,340,000.00</td><td>41</td><td>Mar 25, 2026</td><td><span class="tag active">Active</span></td>
+          </tr>
+          <tr>
+            <td><div class="customer-cell"><div class="customer-avatar" style="background:#3498db">NO</div><div><div class="customer-name">Ngozi Okafor</div><div class="customer-email">ngozi.okafor@hotmail.com</div></div></div></td>
+            <td>0812 345 6789</td><td class="amount-cell">3,200,000.00</td><td>68</td><td>Mar 25, 2026</td><td><span class="tag active">Active</span></td>
+          </tr>
+          <tr>
+            <td><div class="customer-cell"><div class="customer-avatar" style="background:#1abc9c">YB</div><div><div class="customer-name">Yusuf Bello</div><div class="customer-email">yusuf.bello@gmail.com</div></div></div></td>
+            <td>0814 567 8901</td><td class="amount-cell">560,000.00</td><td>18</td><td>Mar 25, 2026</td><td><span class="tag active">Active</span></td>
+          </tr>
+          <tr>
+            <td><div class="customer-cell"><div class="customer-avatar" style="background:#e67e22">AA</div><div><div class="customer-name">Amina Abdullahi</div><div class="customer-email">amina.a@gmail.com</div></div></div></td>
+            <td>0816 789 0123</td><td class="amount-cell">1,890,000.00</td><td>45</td><td>Mar 24, 2026</td><td><span class="tag active">Active</span></td>
+          </tr>
+          <tr>
+            <td><div class="customer-cell"><div class="customer-avatar" style="background:#8e44ad">OA</div><div><div class="customer-name">Oluwaseun Adeyemi</div><div class="customer-email">seun.adeyemi@work.com</div></div></div></td>
+            <td>0818 901 2345</td><td class="amount-cell">8,450,000.00</td><td>156</td><td>Mar 24, 2026</td><td><span class="tag active">Active</span></td>
+          </tr>
+          <tr>
+            <td><div class="customer-cell"><div class="customer-avatar" style="background:#34495e">BN</div><div><div class="customer-name">Blessing Nwankwo</div><div class="customer-email">blessing.n@gmail.com</div></div></div></td>
+            <td>0820 123 4567</td><td class="amount-cell">420,000.00</td><td>14</td><td>Mar 22, 2026</td><td><span class="tag new">New</span></td>
+          </tr>
+          <tr>
+            <td><div class="customer-cell"><div class="customer-avatar" style="background:#16a085">TB</div><div><div class="customer-name">Tunde Bakare</div><div class="customer-email">tunde.bakare@corp.ng</div></div></div></td>
+            <td>0822 345 6789</td><td class="amount-cell">2,670,000.00</td><td>73</td><td>Mar 21, 2026</td><td><span class="tag active">Active</span></td>
+          </tr>
+          <tr>
+            <td><div class="customer-cell"><div class="customer-avatar" style="background:#c0392b">AM</div><div><div class="customer-name">Aisha Mohammed</div><div class="customer-email">aisha.m@email.com</div></div></div></td>
+            <td>0824 567 8901</td><td class="amount-cell">150,000.00</td><td>5</td><td>Mar 15, 2026</td><td><span class="tag inactive">Inactive</span></td>
+          </tr>
+          <tr>
+            <td><div class="customer-cell"><div class="customer-avatar" style="background:#2980b9">KI</div><div><div class="customer-name">Kelechi Iheanacho</div><div class="customer-email">kelechi.i@sports.ng</div></div></div></td>
+            <td>0826 789 0123</td><td class="amount-cell">5,100,000.00</td><td>98</td><td>Mar 20, 2026</td><td><span class="tag active">Active</span></td>
+          </tr>
+          <tr>
+            <td><div class="customer-cell"><div class="customer-avatar" style="background:#f39c12">FU</div><div><div class="customer-name">Fatima Usman</div><div class="customer-email">fatima.u@mail.com</div></div></div></td>
+            <td>0828 901 2345</td><td class="amount-cell">780,000.00</td><td>22</td><td>Mar 19, 2026</td><td><span class="tag active">Active</span></td>
+          </tr>
+          <tr>
+            <td><div class="customer-cell"><div class="customer-avatar" style="background:#7f8c8d">CE</div><div><div class="customer-name">Chukwudi Eze</div><div class="customer-email">chukwudi.e@business.com</div></div></div></td>
+            <td>0830 012 3456</td><td class="amount-cell">95,000.00</td><td>3</td><td>Feb 28, 2026</td><td><span class="tag inactive">Inactive</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pagination">
+        <div class="pagination-info">Page 1 of 189</div>
+        <div class="pagination-btns">
+          <button class="page-btn disabled">&laquo;</button>
+          <button class="page-btn disabled">&lsaquo;</button>
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <button class="page-btn">4</button>
+          <button class="page-btn">5</button>
+          <button class="page-btn">&rsaquo;</button>
+          <button class="page-btn">&raquo;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://swiftagents.org/widget.js" data-company-id="01490b45-52bd-4317-b2f7-e93264210201" defer></script>
+</body>
+</html>
