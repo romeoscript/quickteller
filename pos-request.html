@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from business.quickteller.com/pos-request by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Mar 2026 09:59:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="apple-itunes-app" content="app-id=1562703831">
+    <meta name="google-play-app" content="app-id=com.business.quickteller">
+
+    <meta name="keywords" content="payments, africa, nigeria, ghana, fintech, tech in africa, ussd, mobile money, pos, Interswitch, Quickteller, card payment, USSD,Verve ewallet , Pay with QR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/variables.css" />
+  <link rel="stylesheet" href="styles/layout.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+
+    <title>Quickteller Business Smart POS</title>
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-W3K2JT3');</script>
+  <!-- End Google Tag Manager -->
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/5facea568e1c140c2abd63f7/default';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+    })();
+  </script>
+  <!--End of Tawk.to Script-->
+
+  
+          <meta content="#fintech #payment #technology #transaction #africa" name="keywords">
+  
+          <meta content="Interswitch - Electronic Payment and Digital Commerce Solutions." name="description">
+          <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+          <meta content="origin-when-cross-origin" name="referrer">
+          <!-- Bootstrap CSS -->
+          <link href="../cdn.jsdelivr.net/npm/bootstrap%405.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+          <link href="../cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" rel="stylesheet">
+  
+          <link rel="stylesheet" href="styles/pos.css">
+  
+</head>
+</head>
+<body>
+    
+        <header id="site-header" class="page-centered-container">
+      
+      <div class="nav-container page-padded-container">
+        <a class="logo-container" href="index.html">
+          <img class="logo" src="assets/images/app-logo.svg" alt="Logo"/>
+        </a>
+    
+        <nav class="nav--links">
+          <ul>
+        <li>
+          <a class="nav--link" href="index.html">Overview</a>
+        </li>
+        <li>
+          <a class="nav--link" href="storefront-offering.html">Storefront</a>
+        </li>
+        <li>
+          <a class="nav--link" href="pricing.html">Pricing</a>
+        </li>
+        <li>
+          <a class="nav--link" href="checkout-demo.html">Checkout Demo</a>
+        </li>
+        <li>
+          <a class="nav--link" href="pos-request.html">Request POS</a>
+        </li>
+        <li>
+          <a class="nav--link" href="https://developer.interswitchgroup.com/docs/quickteller-business/" >Developers</a>
+        </li>
+    
+          </ul>
+    
+        </nav>
+    
+        <nav class="auth-container">
+            <a class="action-button primary flat" href="signin.html">Sign in</a>
+    
+            <a class="action-button primary" href="signup.html">Get Started</a>
+        </nav>
+    
+    
+    
+        <nav class="menu-button-container">
+          <div class="menu-button">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </nav>
+    
+      </div>
+    
+      <div class="navigation-dropdown">
+    
+        <div class="content-container">
+          <div class="close-button">
+            <img src="assets/icons/close.svg" alt="close"/>
+          </div>
+    
+          <nav>
+            <ul>
+                <li>
+                  <a class="nav--link" href="index.html">Overview</a>
+                </li>
+    
+               <li>
+                <a class="nav--link" href="storefront-offering.html">Storefront</a>
+              </li>
+    
+              <li>
+                <a class="nav--link" href="pricing.html">Pricing</a>
+              </li>
+              <li>
+                <a class="nav--link" href="checkout-demo.html">Checkout Demo</a>
+              </li>
+              <li>
+                <a class="nav--link" href="pos-request.html">Request POS</a>
+              </li>
+              <li>
+                <a class="nav--link" href="https://developer.interswitchgroup.com/docs/quickteller-business/" >Developers</a>
+              </li>
+          </ul>
+          </nav>
+    
+            <a class="action-button primary" href="signin.html">Sign in</a>
+    
+        </div>
+      </div>
+    </header>
+    
+    <style>
+      #site-header {
+        position: absolute;
+        width: 100%;
+        flex: 1;
+        height: var(--header-height);
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        z-index: 99999;
+      }
+    
+      #site-header.transparent {
+        background-color: transparent;
+      }
+    
+      #site-header .logo-container {
+        height: 50px;
+      }
+    
+      #site-header .logo-container-zib {
+        height: 80px;
+      }
+    
+      @media (min-width: 480px) {
+        #site-header .logo-container {
+          height: 55px;
+        }
+        #site-header .logo-container-zib {
+          height: 100px;
+          margin-top: 27px;
+        }
+      }
+    
+      #site-header .logo-container img, #site-header .logo-container-zib img {
+        height: 100%;
+      }
+    
+      #site-header .logo-container img.logo, #site-header .logo-container-zib img.logo {
+        display: block;
+      }
+    
+      #site-header > .nav-container{
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        box-sizing: border-box;
+      }
+    
+      #site-header .nav--link{
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--header-text-color);
+      }
+    
+      #site-header .nav--link--whitelabelZib{
+        color: var(--header-text-whitelabelZib-color);
+      }
+      #site-header .nav--link--whitelabelHalo{
+        color: var(--header-text-whitelabelHalo-color);
+      }
+    
+      #site-header .nav--links {
+        flex: 1;
+        display: none;
+        margin-right: 50px;
+      }
+    
+      @media (min-width: 900px) {
+        #site-header .nav--links {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          align-items: center;
+        }
+      }
+    
+      #site-header .nav--links ul {
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        align-items: center;
+      }
+    
+      #site-header .nav--links li {
+        margin-right: 25px;
+      }
+    
+      #site-header .nav--links li a {
+        text-decoration: none;
+        font-weight: 500;
+      }
+    
+      #site-header .auth-container {
+        display: none;
+      }
+    
+      #site-header .auth-container a {
+        height: 40px;
+        width: 80px;
+      }
+    
+      #site-header .auth-container a:last-child {
+        width: 150px;
+      }
+    
+      @media (min-width: 900px) {
+        #site-header .auth-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        }
+      }
+    
+      #site-header .auth-container a:first-child {
+        margin-right: 20px;
+      }
+    
+    
+    
+    
+    
+      #site-header .menu-button-container {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+      }
+    
+      @media (min-width: 900px) {
+        #site-header .menu-button-container {
+          display: none;
+        }
+      }
+    
+      #site-header .menu-button {
+        width: 30px;
+        height: 23px;
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+      }
+    
+      #site-header .menu-button span {
+        width: 100%;
+        height: 3px;
+        background-color: var(--header-text-color);
+      }
+    
+      #site-header .menu-button span:nth-child(2){
+        width: 70%;
+      }
+    
+    
+    
+    
+    
+      #site-header .navigation-dropdown {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        z-index: 1000;
+        
+        transition-duration: 250ms;
+        transform-origin: 100% 0;
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(0.98); 
+      }
+    
+      #site-header .navigation-dropdown.open {
+        display: block;
+        transform: scale(1);
+        opacity: 1;
+        pointer-events: auto;
+      }
+    
+      @media (min-width: 900px) {
+        #site-header .navigation-dropdown, 
+        #site-header .navigation-dropdown.open {
+          display: none;
+        }
+      }
+    
+      #site-header .navigation-dropdown .content-container {
+        position: relative;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 26px 0 rgb(92 92 92 / 39%);
+      }
+    
+      @media (min-width: 500px) {
+        #site-header .navigation-dropdown .content-container {
+          max-width: 300px;
+          margin-left: auto;
+        }
+      }
+    
+      #site-header .navigation-dropdown nav {
+        margin-top: 20px;
+        margin-bottom: 40px;
+      }
+    
+      #site-header .navigation-dropdown nav ul {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+      }
+    
+      #site-header .navigation-dropdown nav ul li a {
+        height: 48px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-size: 1.8rem;
+        font-weight: 400;
+        text-decoration: none;
+      }
+    
+      #site-header .navigation-dropdown .action-button {
+        height: 40px;
+        width: 110px;
+      }
+    
+      #site-header .navigation-dropdown .close-button {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+    
+      #site-header .navigation-dropdown .close-button img {
+        width: 15px;
+        height: 15px;
+      }
+    
+      @keyframes navigation-dropdown-open {
+        0 {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    </style>
+    
+    <script>
+      var navigationDropdown = document.querySelector('#site-header .navigation-dropdown');
+      
+      var menuButton = document.querySelector('#site-header .menu-button');
+      menuButton.addEventListener('click', function() {
+        console.log(888);
+        navigationDropdown.classList.add('open');
+      });
+    
+      var navigationDropdownCloseButton = document.querySelector('#site-header .navigation-dropdown .close-button');
+      navigationDropdownCloseButton.addEventListener('click', function() {
+        navigationDropdown.classList.remove('open');
+      });
+    </script>    <main class="main-container">
+      <div class="smart--pos">
+        <div class="smart--pos__image">
+          <img
+            alt=""
+            src="../mcusercontent.com/a1ea9a1f2e247f97189302b80/images/954188de-5048-09dd-92fc-f17e4d884407.png"
+          />
+        </div>
+        <div class="form--data">
+          <div class="form--data__header">
+            <h3>Your Smart POS is Just a Few Clicks Away</h3>
+            <p>
+              Let us help you kick-start the journey that’s beyond collecting
+              payments, please share your details here.
+            </p>
+          </div>
+          <div class="form--data__form">
+            <form id="form_details" name="smart-pos">
+              <div id="form_inputs">
+                <div class="row">
+                  <div class="col first-mobile">
+                    <label>First Name</label>
+                    <input
+                      class="form-control"
+                      id="fname"
+                      name="firstName"
+                      placeholder="First Name"
+                      type="text"
+                    />
+                  </div>
+                  <div class="col">
+                    <label>Last Name</label>
+                    <input
+                      class="form-control"
+                      id="lname"
+                      name="lastName"
+                      placeholder="Last Name"
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <div class="form-group" style="margin-top: 15px">
+                  <label>Phone Number</label>
+                  <input
+                    class="form-control"
+                    id="pnumber"
+                    name="phoneNumber"
+                    placeholder="Phone Number"
+                    type="text"
+                  />
+                </div>
+                <div class="form-group" style="margin-top: 15px; color: black">
+                  <label>Email Address</label>
+                  <input
+                    class="form-control"
+                    data-error-validation-msg="Not a valid email address"
+                    id="email"
+                    name="email"
+                    placeholder="Your Email Address"
+                    type="email"
+                  />
+                </div>
+                <div class="form-group" style="margin-top: 15px">
+                  <label>Address</label>
+                  <input
+                    class="form-control"
+                    id="address"
+                    name="Address"
+                    placeholder="Address"
+                    type="text"
+                  />
+                </div>
+                <div class="row" style="margin-top: 15px; color: black">
+                  <div class="col first-mobile">
+                    <label class="control-label">State</label>
+                    <select
+                      style="color: black"
+                      onchange="toggleLGA(this);"
+                      name="State"
+                      id="state"
+                      class="form-control"
+                    >
+                      <option value="" selected="selected">--select--</option>
+                      <option value="Abia">Abia</option>
+                      <option value="Adamawa">Adamawa</option>
+                      <option value="AkwaIbom">AkwaIbom</option>
+                      <option value="Anambra">Anambra</option>
+                      <option value="Bauchi">Bauchi</option>
+                      <option value="Bayelsa">Bayelsa</option>
+                      <option value="Benue">Benue</option>
+                      <option value="Borno">Borno</option>
+                      <option value="Cross River">Cross River</option>
+                      <option value="Delta">Delta</option>
+                      <option value="Ebonyi">Ebonyi</option>
+                      <option value="Edo">Edo</option>
+                      <option value="Ekiti">Ekiti</option>
+                      <option value="Enugu">Enugu</option>
+                      <option value="FCT">FCT</option>
+                      <option value="Gombe">Gombe</option>
+                      <option value="Imo">Imo</option>
+                      <option value="Jigawa">Jigawa</option>
+                      <option value="Kaduna">Kaduna</option>
+                      <option value="Kano">Kano</option>
+                      <option value="Katsina">Katsina</option>
+                      <option value="Kebbi">Kebbi</option>
+                      <option value="Kogi">Kogi</option>
+                      <option value="Kwara">Kwara</option>
+                      <option value="Lagos">Lagos</option>
+                      <option value="Nasarawa">Nasarawa</option>
+                      <option value="Niger">Niger</option>
+                      <option value="Ogun">Ogun</option>
+                      <option value="Ondo">Ondo</option>
+                      <option value="Osun">Osun</option>
+                      <option value="Oyo">Oyo</option>
+                      <option value="Plateau">Plateau</option>
+                      <option value="Rivers">Rivers</option>
+                      <option value="Sokoto">Sokoto</option>
+                      <option value="Taraba">Taraba</option>
+                      <option value="Yobe">Yobe</option>
+                      <option value="Zamfara">Zamafara</option>
+                    </select>
+                  </div>
+                  <div class="col">
+                    <label class="control-label">LGA</label>
+                    <select
+                      style="color: black"
+                      name="Local Government"
+                      id="lga"
+                      class="form-control select-lga"
+                      required
+                    ></select>
+                  </div>
+                </div>
+
+                <div class="form-group" style="margin-top: 15px">
+                  <label>Where Do You Sell?</label>
+                  <select id="store__location" name="store__location">
+                    <option value="">--select--</option>
+                    <option value="Online">Online</option>
+                    <option value="Offline (Physical Shop)">
+                      Offline (Physical Shop)
+                    </option>
+                    <option value="Both">Both</option>
+                  </select>
+                </div>
+                <div class="form-group" style="margin-top: 15px">
+                  <label>Business Type</label>
+                  <select id="businessType" name="businessType">
+                    <option value="">--select--</option>
+                    <option value="Supermarket">Supermarket</option>
+                    <option value="Fast Food/Restaurant">
+                      Fast Food/Restaurant
+                    </option>
+                    <option value="Retail Store">Retail Store</option>
+                    <option value="Hotel/Lounge">Hotel/Lounge</option>
+                    <option value="Pharmacy/Healthcare">
+                      Pharmacy/Healthcare
+                    </option>
+                    <option value="Logistics">Logistics</option>
+                    <option value="POS Agents">POS Agent</option>
+                    <option value="Others">Others</option>
+                  </select>
+                </div>
+                <div class="form-group" style="margin-top: 15px">
+                  <label>Average Monthly Sales/Turnover</label>
+                  <select id="monthlySales" name="monthlySales">
+                    <option value="">--select--</option>
+                    <option value="Below N500,000">Below N500,000</option>
+                    <option value="N500,001 – N1,000,000">
+                      N500,001 – N1,000,000
+                    </option>
+                    <option value="N1,000,001 – N1,500,000">
+                      N1,000,001 – N1,500,000
+                    </option>
+                    <option value="N1,500,001 – N2,000,000">
+                      N1,500,001 – N2,000,000
+                    </option>
+                    <option value="Above N2,000,000">Above N2,000,000</option>
+                  </select>
+                </div>
+                <div class="form-group" style="margin-top: 15px">
+                  <label
+                    >Will you be interested in integrating a Business Management
+                    Software?</label
+                  >
+                  <div class="contact--selection">
+                    <div>
+                      <input name="bmsInterest" type="radio" value="Yes" />
+                      <label class="contact--selection__options" for="Yes"
+                        >Yes</label
+                      >
+                    </div>
+                    <div>
+                      <input name="bmsInterest" type="radio" value="No" />
+                      <label class="contact--selection__options" for="No"
+                        >No</label
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group privacy--policy">
+                  <input id="privacy" name="" type="checkbox" />
+                  <label class="privacy"
+                    >I <strong>Agree</strong> to Quickteller Business'
+                    <a
+                      href="https://mufasa.interswitchng.com/p/project-x-merchant/qtb/QTB_terms_conditions.pdf"
+                      style="color: #00425f"
+                      >Privacy Policy</a
+                    ></label
+                  >
+                </div>
+                <div
+                  class="text-center text-lg-center w-100"
+                  style="margin-top: 45px"
+                >
+                  <button style="width: 100%" type="submit">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer id="site-footer" class="page-centered-container">
+    
+      <div class="page-padded-container">
+    
+        <div class="links-blocks-container">
+          <div class="links-block">
+            <h6>Interswitch</h6>
+            <a href="https://www.interswitchgroup.com/">Company</a>
+            <a href="https://www.interswitchgroup.com/ng/career-at-the-switch">Jobs</a>
+              <a href="#" target="_blank" rel="noopener noreferrer">Privacy & Terms</a>
+          </div>
+    
+          <div class="links-block">
+            <h6>Developers</h6>
+            <a href="#">Overview</a>
+            <a href="https://developer.interswitchgroup.com/docs/quickteller-business/">Documentation</a>
+            <a href="checkout-demo.html">Checkout Demo</a>
+          </div>
+    
+          <div class="links-block">
+            <h6>Pricing</h6>
+            <a href="#">Nigeria</a>
+          </div>
+    
+    
+          <div class="links-block">
+            <h6>Learn</h6>
+            <a href="https://medium.com/@interswitchengineering">Tech Blog</a>
+            <a href="#">Video Tutorials</a>
+            <a href="faqs.html">FAQs</a>
+          </div>
+        </div>
+    
+    
+        <div class="links-blocks-container">
+          <div class="links-block">
+            <h6>Contact Us</h6>
+            <p>1648C Oko Awo Street,<br />Victoria Island, Lagos<p/>
+            <a href="mailto:support@interswitchgroup.com">support@interswitchgroup.com</a>
+          </div>
+    
+          <div class="button-container">
+            <a class="action-button primary" href="signup.html">
+              Sign up for free
+            </a>
+          </div>
+    
+          <div class="links-block">
+          </div>
+    
+          <div class="links-block">
+          </div>
+        </div>
+    
+        <div class="cbn-text">
+          <img src="assets/images/home/img-cbn.webp" alt="Central bank of Nigeria">
+    
+          <p>Interswitch is regulated by the Central Bank of Nigeria</p>
+        </div>
+    
+    
+      </div>
+    
+    </footer>
+    
+    <style>
+      #site-footer {
+        padding-top: 80px;
+        padding-bottom: 80px;
+        border-top: solid 1px rgba(2, 4, 16, 0.1);
+      }
+    
+      #site-footer .links-blocks-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 70px;
+      }
+    
+      #site-footer .links-blocks-container:last-child {
+        margin-bottom: 0px;
+      }
+    
+      @media (min-width: 480px) {
+        #site-footer .links-blocks-container {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+      }
+    
+      #site-footer .links-blocks-container > div {
+        flex: 1;
+      }
+    
+      #site-footer .links-block {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40px;
+      }
+    
+      #site-footer .links-block h6 {
+        color: #020410;
+        font-size: 15px;
+        margin-bottom: 20px;
+      }
+    
+      #site-footer .links-block a, #site-footer .links-block p  {
+        margin-bottom: 10px;
+        text-decoration: none;
+        font-size: 15px;
+        color: #020410;
+      }
+    
+      #site-footer .button-container a {
+        width: 180px;
+      }
+    
+      #site-footer .cbn-text {
+          margin-top: 24px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+    
+        #site-footer .cbn-text img{
+          width: 32px;
+          height: 42px;
+          object-fit: contain;
+          margin-right: 14px;
+        }
+        #site-footer .cbn-text p{
+          color: #03435e;
+          text-align: left;
+          font-size: 1.4rem;
+          line-height: 1.36;
+        }
+    
+    </style>
+
+    <script src="../cdn.jsdelivr.net/npm/bootstrap%405.1.1/dist/js/bootstrap.bundle.min.js">
+	</script> 
+	<script src="http://cdn.jsdelivr.net/npm/sweetalert2@11">
+	</script> 
+
+	 <script src="js/lga.js"></script>
+
+    <script>
+      var form = document.getElementById("form_details");
+      var bmsInterestList = document.getElementsByName("bmsInterest");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        var fName = document.getElementById("fname").value;
+        var lName = document.getElementById("lname").value;
+        var email = document.getElementById("email").value;
+        var phoneNumber = document.getElementById("pnumber").value;
+        var storeLocation = document.getElementById("store__location").value;
+        var businessType = document.getElementById("businessType").value;
+        var monthlySales = document.getElementById("monthlySales").value;
+        let address = document.getElementById("address").value;
+        var state = document.getElementById("state").value;
+        var lga = document.getElementById("lga").value;
+        var bmsInterest;
+
+        for (var i = 0; i < bmsInterestList.length; i++) {
+          if (bmsInterestList[i].checked) {
+            bmsInterest = bmsInterestList[i].value;
+          }
+        }
+
+        var privacy = document.getElementById("privacy").checked;
+
+        // console.log(fName, lName, email, phoneNumber, storeLocation, contactPreference, timePreference, privacy);
+
+        if (
+          fName == "" ||
+          lName == "" ||
+          email == "" ||
+          phoneNumber == "" ||
+          storeLocation == "select" ||
+          businessType == "select" ||
+          monthlySales == "select" ||
+          address == "" ||
+          state == "select" ||
+          lga == "" ||
+          bmsInterest == "" ||
+          privacy == false
+        ) {
+          Swal.fire({
+            title: "Error!",
+            text: "Please fill the form fields & Agree to the Privacy Policy",
+            type: "danger",
+            confirmButtonColor: "#0275d8",
+          });
+        } else {
+          const scriptURL =
+            "https://script.google.com/macros/s/AKfycbwnWrlwTNqpeUZIVGclVwbdyh2mBPkN14qPqs8twVR8lScmtcmx7RZ14E6FwJvyTC6Siw/exec";
+          var form = document.forms["smart-pos"];
+          fetch(scriptURL, { method: "POST", body: new FormData(form) }).then(
+            Swal.fire({
+              title: "Registered Successfully",
+              icon: "success",
+              text: "Thank you for indicating your interest. You would be contacted soon.",
+              confirmButtonColor: "#0275d8",
+            }).then(form.reset())
+          );
+        }
+      });
+    </script>
+</body>
+
+<!-- Mirrored from business.quickteller.com/pos-request by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Mar 2026 09:59:58 GMT -->
+</html><script id="f5_cspm">(function(){var f5_cspm={f5_p:'DPGLOBBIMDFAGFCJOKFMLMAIOLNHOEIACBCGCAIAANEILDACCDEGDJCAGNJOPPCCILEBNFCNAAPBOMGMKNGANPOOAACCHLPOAKDHICAIIKGCPCHMHJBIOBBEHJINMKOB',setCharAt:function(str,index,chr){if(index>str.length-1)return str;return str.substr(0,index)+chr+str.substr(index+1);},get_byte:function(str,i){var s=(i/16)|0;i=(i&15);s=s*32;return((str.charCodeAt(i+16+s)-65)<<4)|(str.charCodeAt(i+s)-65);},set_byte:function(str,i,b){var s=(i/16)|0;i=(i&15);s=s*32;str=f5_cspm.setCharAt(str,(i+16+s),String.fromCharCode((b>>4)+65));str=f5_cspm.setCharAt(str,(i+s),String.fromCharCode((b&15)+65));return str;},set_latency:function(str,latency){latency=latency&0xffff;str=f5_cspm.set_byte(str,40,(latency>>8));str=f5_cspm.set_byte(str,41,(latency&0xff));str=f5_cspm.set_byte(str,35,2);return str;},wait_perf_data:function(){try{var wp=window.performance.timing;if(wp.loadEventEnd>0){var res=wp.loadEventEnd-wp.navigationStart;if(res<60001){var cookie_val=f5_cspm.set_latency(f5_cspm.f5_p,res);window.document.cookie='f5avr0547565165aaaaaaaaaaaaaaaa_cspm_='+encodeURIComponent(cookie_val)+';path=/;'+'';}
+return;}}
+catch(err){return;}
+setTimeout(f5_cspm.wait_perf_data,100);return;},go:function(){var chunk=window.document.cookie.split(/\s*;\s*/);for(var i=0;i<chunk.length;++i){var pair=chunk[i].split(/\s*=\s*/);if(pair[0]=='f5_cspm'&&pair[1]=='1234')
+{var d=new Date();d.setTime(d.getTime()-1000);window.document.cookie='f5_cspm=;expires='+d.toUTCString()+';path=/;'+';';setTimeout(f5_cspm.wait_perf_data,100);}}}}
+f5_cspm.go();}());</script>

@@ -1,0 +1,67 @@
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0px;
+}
+
+* {
+  font-family: kumbh_sans, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0px;
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 2.3rem;
+  line-height: 40px;
+}
+
+p {
+  font-size: 1.6rem;
+  margin: 0px;
+  line-height: 2.8rem;
+}
+
+a {
+  font-size: 1.6rem;
+  color: var(--header-text-color);
+}
+
+img {
+  transform: translateZ(0px);
+  image-rendering: -webkit-optimize-contrast;
+}
+/* FONTS */
+@font-face {
+  font-family: 'kumbh_sans';
+  src: url('../fonts/kumbhsans/KumbhSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'kumbh_sans';
+  src: url('../fonts/kumbhsans/KumbhSans-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'kumbh_sans';
+  src: url('../fonts/kumbhsans/KumbhSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'kumbh_sans';
+  src: url('../fonts/kumbhsans/KumbhSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
