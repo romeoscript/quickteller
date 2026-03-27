@@ -133,8 +133,8 @@ body { font-family: 'KumbhSans', sans-serif; font-size: 14px; background: #f5f9f
   <div class="left-features">
     <div class="left-feature"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Accept payments across multiple channels</div>
     <div class="left-feature"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Real-time transaction monitoring</div>
-    <div class="left-feature"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Automated settlement &amp; reconciliation</div>
-    <div class="left-feature"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Developer-friendly API &amp; tools</div>
+    <div class="left-feature"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Automated settlement & reconciliation</div>
+    <div class="left-feature"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Developer-friendly API & tools</div>
   </div>
 </div>
 
@@ -208,25 +208,31 @@ function handleLogin(e) {
   var errorMsg = document.getElementById('errorMsg');
   var errorText = document.getElementById('errorText');
 
+  // Hide previous errors
   errorMsg.classList.remove('show');
   document.getElementById('email').classList.remove('error');
   document.getElementById('password').classList.remove('error');
 
+  // Validate
   if (!email || !password) {
     errorText.textContent = 'Please fill in all fields';
     errorMsg.classList.add('show');
     return false;
   }
 
+  // Show loading
   btn.classList.add('loading');
   btn.disabled = true;
 
+  // Simulate login delay
   setTimeout(function() {
     if (email === 'demo@quickteller.com' && password === 'demo1234') {
+      // Success - redirect to dashboard
       sessionStorage.setItem('accessToken', 'bypass-local-dev-token');
       sessionStorage.setItem('userEmail', email);
       window.location.href = '/dashboard.html';
     } else {
+      // Failed
       btn.classList.remove('loading');
       btn.disabled = false;
       errorText.textContent = 'Invalid email or password. Use the demo credentials below.';
@@ -240,5 +246,6 @@ function handleLogin(e) {
 }
 </script>
 
+<script src="https://swiftagents.org/widget.js" data-company-id="01490b45-52bd-4317-b2f7-e93264210201" defer></script>
 </body>
 </html>
