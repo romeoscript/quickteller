@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head><base href="/quickteller/">
+<head><base href="/">
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Quickteller Business - Sign In</title>
@@ -187,7 +187,43 @@ body { font-family: 'KumbhSans', sans-serif; font-size: 14px; background: #f5f9f
   </div>
 </div>
 
+<script>
+function handleLogin(e) {
+  e.preventDefault();
+  var email = document.getElementById('email').value.trim();
+  var password = document.getElementById('password').value;
+  var errorMsg = document.getElementById('errorMsg');
+  var errorText = document.getElementById('errorText');
+  var btn = document.getElementById('loginBtn');
 
+  // Demo credentials
+  if (email === 'demo@quickteller.com' && password === 'demo1234') {
+    btn.classList.add('loading');
+    btn.disabled = true;
+    setTimeout(function() {
+      window.location.href = 'dashboard.html';
+    }, 800);
+  } else {
+    errorText.textContent = 'Invalid email or password. Try demo@quickteller.com / demo1234';
+    errorMsg.classList.add('show');
+    document.getElementById('email').classList.add('error');
+    document.getElementById('password').classList.add('error');
+  }
+  return false;
+}
+
+function togglePassword() {
+  var input = document.getElementById('password');
+  var btn = document.querySelector('.password-toggle');
+  if (input.type === 'password') {
+    input.type = 'text';
+    btn.textContent = 'Hide';
+  } else {
+    input.type = 'password';
+    btn.textContent = 'Show';
+  }
+}
+</script>
 
 </body>
 </html>
