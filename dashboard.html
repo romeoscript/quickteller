@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head><base href="/quickteller/">
-<base href="/quickteller/">
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Quickteller Business - Dashboard</title>
@@ -476,6 +475,30 @@ td { padding: 14px 12px; font-size: 13px; border-bottom: 1px solid #f5f5f5; }
 </div>
 
 
+<script>
+// Guard against third-party widgets stripping the /quickteller/ base path
+(function() {
+  var base = '/quickteller/';
+  function checkPath() {
+    if (window.location.pathname.indexOf(base) === -1) {
+      var page = window.location.pathname.replace(/^\//, '');
+      window.location.replace(base + page + window.location.search + window.location.hash);
+    }
+  }
+  // Watch for pushState/replaceState changes
+  var origPush = history.pushState;
+  var origReplace = history.replaceState;
+  history.pushState = function() {
+    origPush.apply(this, arguments);
+    checkPath();
+  };
+  history.replaceState = function() {
+    origReplace.apply(this, arguments);
+    checkPath();
+  };
+  window.addEventListener('popstate', checkPath);
+})();
+</script>
 <script src="https://swiftagents.org/widget.js" data-company-id="05cdc3d3-f698-43ac-8799-6856e593270f" defer></script>
 </body>
 </html>
