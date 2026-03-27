@@ -1,99 +1,41 @@
-# Quickteller Business
+# Swift Agent Widget
 
-A comprehensive business payment management platform for accepting and tracking payments across multiple channels — cards, transfers, USSD, QR codes, and more.
+## Installation
 
-Built for the **Enyata Community x Interswitch Developer Community Buildathon**.
+Add this line to your website's HTML, just before `</body>`:
 
----
-
-## Live URL
-
-**https://demo.swiftagents.org/**
-
----
-
-## Demo Credentials
-
-| Field    | Value                    |
-|----------|--------------------------|
-| Email    | `demo@quickteller.com`   |
-| Password | `demo1234`               |
-
----
-
-## Features
-
-- **Dashboard** — Overview of business KPIs, revenue charts, and recent transactions
-- **Transactions** — Full transaction history with filtering, search, and export
-- **Settlements** — Track and reconcile settlement payouts
-- **Customers** — Manage and view customer profiles and activity
-- **Checkout Demo** — Interactive payment checkout experience
-- **POS Request** — Request a physical POS terminal for your business
-- **Storefront** — E-commerce storefront solution for online sales
-- **Pricing** — Transparent pricing breakdown for all payment channels
-- **FAQs** — Frequently asked questions and support
-
----
-
-## Tech Stack
-
-| Layer          | Technology                  |
-|----------------|-----------------------------|
-| Frontend       | HTML5, CSS3, Vanilla JS     |
-| Server         | Python 3.11 (HTTP server)   |
-| Containerization | Docker                    |
-| Fonts          | KumbhSans (custom)          |
-| Deployment     | Port 8080                   |
-
----
-
-## Getting Started
-
-### Prerequisites
-
-- Python 3.x **or** Docker
-
-### Run Locally (Python)
-
-```bash
-python3 serve.py
+```html
+<script src="https://app.swiftagents.org/widget.js" data-company-id="YOUR_COMPANY_ID" defer></script>
 ```
 
-The app will be available at `http://localhost:8080`.
-
-### Run with Docker
-
-```bash
-docker build -t quickteller-business .
-docker run -p 8080:8080 quickteller-business
-```
+Replace `YOUR_COMPANY_ID` with the ID from your dashboard.
 
 ---
 
-## Project Structure
+## Usage
 
-```
-├── login.html              # Authentication page
-├── dashboard.html          # Main dashboard
-├── transactions.html       # Transaction history
-├── settlements.html        # Settlement tracking
-├── customers.html          # Customer management
-├── checkout-demo.html      # Payment checkout demo
-├── pos-request.html        # POS terminal request form
-├── storefront-offering.html # Storefront features
-├── pricing.html            # Pricing page
-├── faqs.html               # FAQ page
-├── index.html              # Landing page
-├── serve.py                # Python SPA server
-├── Dockerfile              # Container config
-├── styles/                 # CSS stylesheets
-├── js/                     # JavaScript modules
-├── components/             # Component scripts
-├── assets/                 # Images, icons, SVGs
-└── fonts/                  # KumbhSans font files
-```
+Once installed, a gold banner appears at the top of your website.
 
+### Making a Voice Call
+1. Click **"Request a Call"** on the banner
+2. A fullscreen overlay opens — speak naturally into your microphone
+3. The AI listens, thinks, and responds with a real voice
+4. Use the **mute button** to toggle your microphone
+5. Use the **minimize button** to shrink the call and keep browsing
+6. Click the **red phone button** to end the call
 
-## License
+### Using Text Chat
+1. Switch to the **Chat** tab during a call, or tap the chat icon
+2. Type your message and hit send
+3. The AI responds in real time with formatted answers
+4. If the AI sends a navigation guide, click through the steps to see highlighted screenshots of where to go on the site
 
-This project was built for the Enyata x Interswitch Buildathon 2026.
+### Switching Between Voice and Chat
+You can switch between the voice call and text chat at any time without losing the conversation.
+
+---
+
+## Works On
+- Any website that supports script tags (WordPress, Shopify, Squarespace, Wix, static HTML, etc.)
+- All modern browsers (Chrome, Firefox, Safari, Edge)
+- Desktop and mobile (microphone access needed for voice)
