@@ -176,7 +176,7 @@ body { font-family: 'KumbhSans', sans-serif; font-size: 14px; background: #f5f9f
     </form>
 
     <p class="signup-text">
-      Don't have an account? <a href="/signup.html" class="signup-link">Sign up</a>
+      Don't have an account? <a href="signup.html" class="signup-link">Sign up</a>
     </p>
 
     <div class="demo-hint">
@@ -230,7 +230,7 @@ function handleLogin(e) {
       // Success - redirect to dashboard
       sessionStorage.setItem('accessToken', 'bypass-local-dev-token');
       sessionStorage.setItem('userEmail', email);
-      window.location.href = '/dashboard.html';
+      window.location.href = 'dashboard.html';
     } else {
       // Failed
       btn.classList.remove('loading');
