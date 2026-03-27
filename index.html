@@ -169,14 +169,14 @@ body { font-family: 'KumbhSans', sans-serif; font-size: 14px; background: #f5f9f
         <label class="remember-label">
           <input type="checkbox" checked> Remember me
         </label>
-        <a href="#" class="forgot-link">Forgot password?</a>
+        <a href="javascript:void(0)" class="forgot-link">Forgot password?</a>
       </div>
 
       <button type="submit" class="login-btn" id="loginBtn">Sign In</button>
     </form>
 
     <p class="signup-text">
-      Don't have an account? <a href="signup.html" class="signup-link">Sign up</a>
+      Don't have an account? <a href="javascript:void(0)" class="signup-link">Sign up</a>
     </p>
 
     <div class="demo-hint">
@@ -187,58 +187,7 @@ body { font-family: 'KumbhSans', sans-serif; font-size: 14px; background: #f5f9f
   </div>
 </div>
 
-<script>
-function togglePassword() {
-  var input = document.getElementById('password');
-  var btn = document.querySelector('.password-toggle');
-  if (input.type === 'password') {
-    input.type = 'text';
-    btn.textContent = 'Hide';
-  } else {
-    input.type = 'password';
-    btn.textContent = 'Show';
-  }
-}
 
-function handleLogin(e) {
-  e.preventDefault();
-  var email = document.getElementById('email').value;
-  var password = document.getElementById('password').value;
-  var btn = document.getElementById('loginBtn');
-  var errorMsg = document.getElementById('errorMsg');
-  var errorText = document.getElementById('errorText');
-
-  errorMsg.classList.remove('show');
-  document.getElementById('email').classList.remove('error');
-  document.getElementById('password').classList.remove('error');
-
-  if (!email || !password) {
-    errorText.textContent = 'Please fill in all fields';
-    errorMsg.classList.add('show');
-    return false;
-  }
-
-  btn.classList.add('loading');
-  btn.disabled = true;
-
-  setTimeout(function() {
-    if (email === 'demo@quickteller.com' && password === 'demo1234') {
-      sessionStorage.setItem('accessToken', 'bypass-local-dev-token');
-      sessionStorage.setItem('userEmail', email);
-      window.location.href = 'dashboard.html';
-    } else {
-      btn.classList.remove('loading');
-      btn.disabled = false;
-      errorText.textContent = 'Invalid email or password. Use the demo credentials below.';
-      errorMsg.classList.add('show');
-      document.getElementById('email').classList.add('error');
-      document.getElementById('password').classList.add('error');
-    }
-  }, 1200);
-
-  return false;
-}
-</script>
 
 </body>
 </html>

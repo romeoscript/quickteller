@@ -3,7 +3,7 @@
 import http.server
 import os
 
-PORT = 3333
+PORT = 8080
 DIR = os.path.dirname(os.path.abspath(__file__))
 
 class SPAHandler(http.server.SimpleHTTPRequestHandler):
